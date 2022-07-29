@@ -1,0 +1,28 @@
+version: '3'
+services:
+  vscode:
+    restart: always
+    build:
+      context: ./vscode
+      dockerfile: Dockerfile
+    container_name: codeserver
+    working_dir: /work
+    tty: true
+    volumes:
+      - ./work:/work
+    ports:
+      - 8000:8000
+    command: code-server serve-local --host 0.0.0.0 --accept-server-license-terms
+  jupyterlab:
+    restart: always
+    build:
+      context: ./jlab
+      dockerfile: Dockerfile
+    container_name: jupyterlab
+    working_dir: /work
+    tty: true
+    volumes:
+      - ./work:/work
+    ports:
+      - 8888:8888
+    command: jupyter-lab --no-browser --port=8888 --ip=0.0.0.0 --allow-root --NotebookApp.token=''
