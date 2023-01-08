@@ -25,3 +25,4 @@ chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 docker compose version
 
 groupadd docker
+usermod -aG docker $USER
