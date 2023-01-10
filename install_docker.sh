@@ -26,3 +26,4 @@ docker compose version
 
 groupadd docker
 usermod -aG docker $USER
+newgrp docker
